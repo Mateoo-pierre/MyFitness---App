@@ -13,10 +13,24 @@ import search from '../assets/icons/search.png';
 import searchOutline from '../assets/icons/search-outline.png';
 import home from '../assets/icons/casa.png';
 import homeOutline from '../assets/icons/casa-outline.png';
+const profilePicture = 'https://lh3.googleusercontent.com/a-/AOh14Gj4Uz2MMMSVdiAl2ibMgqKfJNL4YfVsjROWSatMyQ=s288-p-no';
 
 const Tab = createBottomTabNavigator();
 
 export const Navigation = () => {
+
+    const ImgProfile = () => {
+        return (
+            <View>
+
+                <Image
+                    source={{ uri: 'https://lh3.googleusercontent.com/a-/AOh14Gj4Uz2MMMSVdiAl2ibMgqKfJNL4YfVsjROWSatMyQ=s288-p-no' }}
+                    style={{ width: 26, height: 26, borderRadius: 100 }}
+                />
+            </View>
+        )
+    }
+
     return (
         <NavigationContainer>
             <Tab.Navigator
@@ -29,6 +43,10 @@ export const Navigation = () => {
                         if (route.name === 'search') {
                             iconName = focused ? searchOutline : search;
                         }
+                        if (route.name === 'profile') {
+                            return <ImgProfile />
+
+                        }
 
                         return <Image source={iconName} style={{ width: 25, height: 25 }} />
                     },
@@ -39,6 +57,9 @@ export const Navigation = () => {
                 <Tab.Screen
                     name='home'
                     component={HomeScreen}
+                    options={{
+                        headerShown: false
+                    }}
                 />
                 <Tab.Screen
                     name='search'
