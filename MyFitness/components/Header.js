@@ -1,13 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
 //import icons
 import { Ionicons } from '@expo/vector-icons';
+import { EvilIcons } from '@expo/vector-icons';
 
-export const HeaderHome = () => {
+export const Header = (props) => {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Home</Text>
+            <Text style={styles.title}>{props.title}</Text>
+            {/* <View style={styles.backgTitle} /> */}
             <View style={styles.containerIcons}>
                 <View>
                     <TouchableOpacity>
@@ -16,10 +18,13 @@ export const HeaderHome = () => {
                     </TouchableOpacity>
                 </View>
                 <TouchableOpacity>
-                    <Ionicons name="refresh" size={24} color="black" />
+                    <EvilIcons name="search" size={30} color="black" />
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    <Ionicons name="settings-outline" size={24} color="black" />
+                    <Image
+                        source={{ uri: 'https://lh3.googleusercontent.com/a-/AOh14Gj4Uz2MMMSVdiAl2ibMgqKfJNL4YfVsjROWSatMyQ=s288-p-no' }}
+                        style={styles.image}
+                    />
                 </TouchableOpacity>
             </View>
         </View>
@@ -38,9 +43,16 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
 
+    image: {
+        width: 24,
+        height: 24,
+        borderRadius: 100
+    },
+
     title: {
         fontWeight: 'bold',
-        fontSize: 18
+        fontSize: 18,
+        color: '#000',
     },
 
     notification: {

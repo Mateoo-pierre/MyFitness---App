@@ -1,16 +1,34 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 //import component
-import { Navigation } from './components/Navigation';
+import { HomeScreen } from './screens/HomeScreen';
+import { AthleteScreen } from './screens/AthleteScreen';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <SafeAreaView style={{ flex: 1, paddingTop: 30, backgroundColor: '#EFEFEF' }} >
-      <Navigation />
-      <StatusBar style="auto" />
+    <SafeAreaView style={{ flex: 1, paddingTop: 20, backgroundColor: '#EFEFEF' }} >
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name='home'
+            component={HomeScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name='athlete'
+            component={AthleteScreen}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
     </SafeAreaView>
   );
 }
+
 

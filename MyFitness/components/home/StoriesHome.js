@@ -14,14 +14,16 @@ export const StoriesHome = () => {
     return (
         <View style={styles.containerStories}>
             <View style={styles.containerUser}>
-                <View style={styles.User}>
-                    <Image
-                        source={{ uri: 'https://lh3.googleusercontent.com/a-/AOh14Gj4Uz2MMMSVdiAl2ibMgqKfJNL4YfVsjROWSatMyQ=s288-p-no' }}
-                        style={styles.image}
-                    />
-                    <View style={styles.online}></View>
-                    <Ionicons name="add-outline" size={24} color="black" />
-                </View>
+                <TouchableOpacity>
+                    <View style={styles.User}>
+                        <Image
+                            source={{ uri: 'https://lh3.googleusercontent.com/a-/AOh14Gj4Uz2MMMSVdiAl2ibMgqKfJNL4YfVsjROWSatMyQ=s288-p-no' }}
+                            style={styles.image}
+                        />
+                        <View style={styles.online}></View>
+                        <Ionicons name="add-outline" size={24} color="black" />
+                    </View>
+                </TouchableOpacity>
                 <Text style={styles.text}>You</Text>
             </View>
             <View style={styles.containerUsers} >

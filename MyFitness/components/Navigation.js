@@ -1,75 +1,67 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 //import screens
-import { HomeScreen } from '../screens/HomeScreen';
-import { SearchScreen } from '../screens/SearchScreen';
-import { ProfileScreen } from '../screens/ProfileScreen';
+import { AboutScreen } from '../screens/AtheteScreen/AboutScreen';
+import { WorkoutsScreen } from '../screens/AtheteScreen/WorkoutsScreen';
+import { InsigthsScreen } from '../screens/AtheteScreen/InsigthsScren'
 
-//import icons 
-import search from '../assets/icons/search.png';
-import searchOutline from '../assets/icons/search-outline.png';
-import home from '../assets/icons/casa.png';
-import homeOutline from '../assets/icons/casa-outline.png';
-const profilePicture = 'https://lh3.googleusercontent.com/a-/AOh14Gj4Uz2MMMSVdiAl2ibMgqKfJNL4YfVsjROWSatMyQ=s288-p-no';
+
 
 const Tab = createBottomTabNavigator();
 
 export const Navigation = () => {
 
-    const ImgProfile = () => {
-        return (
-            <View>
-
-                <Image
-                    source={{ uri: 'https://lh3.googleusercontent.com/a-/AOh14Gj4Uz2MMMSVdiAl2ibMgqKfJNL4YfVsjROWSatMyQ=s288-p-no' }}
-                    style={{ width: 26, height: 26, borderRadius: 100 }}
-                />
-            </View>
-        )
-    }
-
     return (
-        <NavigationContainer>
+        <View style={{ flex: 1 }}>
+
+
             <Tab.Navigator
                 screenOptions={({ route }) => ({
-                    tabBarIcon: ({ focused, color, size }) => {
-                        let iconName;
-                        if (route.name === 'home') {
-                            iconName = focused ? homeOutline : home
-                        }
-                        if (route.name === 'search') {
-                            iconName = focused ? searchOutline : search;
-                        }
-                        if (route.name === 'profile') {
-                            return <ImgProfile />
-
-                        }
-
-                        return <Image source={iconName} style={{ width: 25, height: 25 }} />
+                    tabBarStyle: {
+                        backgroundColor: 'transparent',
+                        shadowColor: 'transparent',
+                        top: 10,
+                        position: 'absolute',
+                        borderTopColor: 'transparent',
+                        justifyContent: 'center',
                     },
-                    tabBarActiveTintColor: '#00DEFF',
-                    tabBarInactiveTintColor: 'black'
+                    tabBarIconStyle: {
+                        position: 'absolute'
+                    },
+                    tabBarLabelStyle: {
+                        fontSize: 15,
+                        fontWeight: 'bold',
+                    },
+                    tabBarInactiveTintColor: '#000',
+
+
                 })}
             >
                 <Tab.Screen
-                    name='home'
-                    component={HomeScreen}
+                    name='About'
+                    component={AboutScreen}
                     options={{
                         headerShown: false
                     }}
                 />
                 <Tab.Screen
-                    name='search'
-                    component={SearchScreen}
+                    name='Workouts'
+                    component={WorkoutsScreen}
+                    options={{
+                        headerShown: false
+                    }}
                 />
                 <Tab.Screen
-                    name='profile'
-                    component={ProfileScreen}
+                    name='Insigths'
+                    component={InsigthsScreen}
+                    options={{
+                        headerShown: false
+                    }}
                 />
+
             </Tab.Navigator>
-        </NavigationContainer>
+        </View>
     )
 }
