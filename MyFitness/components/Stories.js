@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
 
-export const Stories = ({ data }) => {
+export const Stories = ({ data, width }) => {
 
     const Story = (props) => {
         return (
@@ -9,9 +9,22 @@ export const Stories = ({ data }) => {
                 <TouchableOpacity style={{ alignItems: 'center' }}>
                     <Image
                         source={{ uri: props.image }}
-                        style={styles.image}
+                        style={{
+                            width: width || 40,
+                            height: width || 40,
+                            borderRadius: 100,
+                            top: 5
+                        }}
                     />
-                    <View style={styles.border} />
+                    <View style={{
+                        width: width + 10 || 50,
+                        height: width + 10 || 50,
+                        borderColor: '#0F7DFF',
+                        borderRadius: 100,
+                        borderWidth: 1,
+                        borderStyle: 'dashed',
+                        position: 'absolute',
+                    }} />
                     <Text style={styles.text}>{props.name}</Text>
                 </TouchableOpacity>
             </View>
@@ -34,23 +47,6 @@ export const Stories = ({ data }) => {
 const styles = StyleSheet.create({
     container: {
         marginHorizontal: 15
-    },
-
-    image: {
-        width: 40,
-        height: 40,
-        borderRadius: 100,
-        top: 5
-    },
-
-    border: {
-        width: 50,
-        height: 50,
-        borderColor: '#0F7DFF',
-        borderRadius: 100,
-        borderWidth: 1,
-        borderStyle: 'dashed',
-        position: 'absolute',
     },
 
     text: {
