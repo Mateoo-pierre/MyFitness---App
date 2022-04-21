@@ -5,8 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 //import screens
 import { AboutScreen } from '../screens/AtheteScreen/AboutScreen';
 import { WorkoutsScreen } from '../screens/AtheteScreen/WorkoutsScreen';
-import { InsigthsScreen } from '../screens/AtheteScreen/InsigthsScren'
-
+import { InsigthsScreen } from '../screens/AtheteScreen/InsigthsScreen';
 
 
 const Tab = createBottomTabNavigator();

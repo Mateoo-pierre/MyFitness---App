@@ -1,24 +1,36 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
 
-export const Stories = ({ data, width }) => {
+//import components
+import { Program } from './Program';
+
+//import fake data
+import { FakeWorkAthleteData } from '../../../FakeWorkAthleteData';
+
+export const Workouts = () => {
+
+    const [workout, setWorkout] = React.useState('66 DAYS OF ABS');
+
+    const handleWorkout = (e) => {
+        setWorkout(e)
+    };
 
     const Story = (props) => {
         return (
             <View style={styles.container}>
-                <TouchableOpacity style={{ alignItems: 'center' }} >
+                <TouchableOpacity style={{ alignItems: 'center' }} onPress={() => handleWorkout(props.name)} >
                     <Image
                         source={{ uri: props.image }}
                         style={{
-                            width: width || 40,
-                            height: width || 40,
+                            width: 80,
+                            height: 80,
                             borderRadius: 100,
                             top: 5
                         }}
                     />
                     <View style={{
-                        width: width + 10 || 50,
-                        height: width + 10 || 50,
+                        width: 90,
+                        height: 90,
                         borderColor: '#0F7DFF',
                         borderRadius: 100,
                         borderWidth: 1,
@@ -26,6 +38,9 @@ export const Stories = ({ data, width }) => {
                         position: 'absolute',
                     }} />
                     <Text style={styles.text}>{props.name}</Text>
+                    {
+                        console.log(workout)
+                    }
                 </TouchableOpacity>
             </View>
         )
@@ -34,19 +49,20 @@ export const Stories = ({ data, width }) => {
     return (
         <View>
             <FlatList
-                data={data}
+                data={FakeWorkAthleteData}
                 renderItem={({ item }) => <Story image={item.image} name={item.name} />}
                 keyExtractor={(item, index) => index.toString()}
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
             />
+            <Program workout={workout} />
         </View>
     )
 };
 
 const styles = StyleSheet.create({
     container: {
-        marginHorizontal: 15
+        marginHorizontal: 15,
     },
 
     text: {

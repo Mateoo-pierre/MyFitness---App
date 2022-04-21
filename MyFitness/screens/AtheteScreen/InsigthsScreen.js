@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-//import components
-import { Workouts } from '../../components/athlete/Workouts/Workouts';
+//import component
+import { Insigths } from '../../components/athlete/Insigths/Insigths';
 
-export const WorkoutsScreen = () => {
+export const InsigthsScreen = () => {
     return (
         <View style={styles.container}>
-            <Workouts />
+            <Insigths />
         </View>
     )
 };
