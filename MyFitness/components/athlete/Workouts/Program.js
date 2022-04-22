@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 //import icons
 import { Ionicons } from '@expo/vector-icons';
@@ -10,30 +11,35 @@ import { FakeWorkAthleteData } from '../../../FakeWorkAthleteData';
 
 export const Program = ({ workout }) => {
 
-    const data = FakeWorkAthleteData.filter(e => e.name === workout)
+    const data = FakeWorkAthleteData.filter(e => e.name === workout);
+
+    const navigation = useNavigation();
 
     const Card = (props) => {
         return (
-            <View style={style.card}>
-                <Image
-                    source={{ uri: props.image }}
-                    style={style.image}
-                />
-                <Text style={style.time}>{props.time}</Text>
-                <View>
-                    <Text style={style.date}>{props.date}</Text>
-                    <Text style={style.name}>{props.name}</Text>
-                    <View style={style.icons}>
-                        <TouchableOpacity>
-                            <Ionicons style={{ marginRight: 20 }} name="md-arrow-down-circle-outline" size={20} color="#0F7DFF" />
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <Ionicons name="ios-notifications-outline" size={20} color="#0F7DFF" />
-                        </TouchableOpacity>
-                    </View>
-                </View>
+            <TouchableOpacity onPress={() => navigation.navigate('workout')}>
+                <View style={style.card}>
 
-            </View>
+                    <Image
+                        source={{ uri: props.image }}
+                        style={style.image}
+                    />
+                    <Text style={style.time}>{props.time}</Text>
+                    <View>
+                        <Text style={style.date}>{props.date}</Text>
+                        <Text style={style.name}>{props.name}</Text>
+                        <View style={style.icons}>
+                            <TouchableOpacity>
+                                <Ionicons style={{ marginRight: 20 }} name="md-arrow-down-circle-outline" size={20} color="#0F7DFF" />
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Ionicons name="ios-notifications-outline" size={20} color="#0F7DFF" />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+
+                </View>
+            </TouchableOpacity >
         )
     }
     return (

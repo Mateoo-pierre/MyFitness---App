@@ -7,6 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 //import component
 import { HomeScreen } from './screens/HomeScreen';
 import { AthleteScreen } from './screens/AthleteScreen';
+import { WorkoutScreen } from './screens/WorkoutScreen/WorkoutScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,11 @@ export default function App() {
           <Stack.Screen
             name='athlete'
             component={AthleteScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name='workout'
+            component={WorkoutScreen}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
